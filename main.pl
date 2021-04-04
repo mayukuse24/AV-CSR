@@ -15,7 +15,7 @@ acc_constraints(T) :- below_speed_limit(T), not(obstacle_in_front(T)).
 brake_constraints(T) :- obstacle_in_front(T).
 brake_constraints(T) :- traffic_signal(red, T).
 
-obstacle_in_front(T) :- self_lane(Lid, T), lane(Lid, Objs, T), member(Oid, Objs), depth(Oid, D, T), D < 10.
+obstacle_in_front(T) :- self_lane(Lid, T), obj_meta(Oid, Depth, Lid, _, T), Depth < 10.
 below_speed_limit(T) :- self_speed(S, T), speed_limit(SL, T), S =< SL.
 
 
