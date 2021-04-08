@@ -1,6 +1,4 @@
-%:- abolish(self_speed/2).
-%:- dynamic self_speed/2.
-%:- dynamic self_lane/2.
+:-style_check(-discontiguous).
 
 %%% FRAME 1 %%%
 % self_speed(speed, timestamp).
@@ -12,9 +10,9 @@ self_lane(1, 1).
 % speed_limit(speed (metres/s), timestamp)
 speed_limit(10, 1).
 
-% obj_meta(object id, depth (metres), lane id, indicator, timestamp)
-obj_meta(1, 22, 1, none, 1).
-obj_meta(2, 45, 1, none, 1).
+% obj_meta(object id, object type, depth (metres), lane id, indicator, timestamp)
+obj_meta(1, car, 22, 1, none, 1).
+obj_meta(2, car, 45, 1, none, 1).
 
 % lane([lane ids]], timestamp) - leftmost lane id = 1
 lanes([1,2,3], 1).
@@ -22,6 +20,9 @@ lanes([1,2,3], 1).
 % traffic_sign(sign, timestamp)
 %traffic_signs(stop, 1).
 
+test_pred(1, 2).
+
+% traffic_light(<light>, timestamp) light - red, yellow, green, none
 traffic_light(none, 1).
 
 % intent(<intent>, timestamp) - used for guiding car based on the route to destination
@@ -36,11 +37,11 @@ self_lane(1, 2).
 
 speed_limit(10, 2).
 
-obj_meta(1, 20, 1, none, 2).
-obj_meta(2, 41, 1, none, 2).
+obj_meta(1, car, 20, 1, none, 2).
+obj_meta(2, car, 41, 1, none, 2).
 
 lanes([1,2,3], 2).
-traffic_signal(none, 2).
+traffic_light(none, 2).
 
 intent(continue_on_lane, 2).
 expected_action(accelerate, 2).
@@ -51,8 +52,8 @@ self_lane(1, 3).
 
 speed_limit(10, 3).
 
-obj_meta(1, 15, 1, none, 3).
-obj_meta(2, 37, 1, none, 3).
+obj_meta(1, car, 15, 1, none, 3).
+obj_meta(2, car, 37, 1, none, 3).
 
 lanes([1,2,3], 3).
 traffic_light(none, 3).
@@ -66,8 +67,8 @@ self_lane(1, 4).
 
 speed_limit(10, 4).
 
-obj_meta(1, 9, 1, none, 4).
-obj_meta(2, 41, 1, none, 4).
+obj_meta(1, car, 9, 1, none, 4).
+obj_meta(2, car, 41, 1, none, 4).
 
 lanes([1,2,3], 4).
 traffic_light(none, 4).
@@ -81,8 +82,8 @@ self_lane(1, 5).
 
 speed_limit(10, 5).
 
-obj_meta(1, 7, 1, none, 5).
-obj_meta(2, 40, 1, none, 5).
+obj_meta(1, car, 7, 1, none, 5).
+obj_meta(2, car, 40, 1, none, 5).
 
 lanes([1,2,3], 5).
 traffic_light(none, 5).
@@ -97,8 +98,8 @@ self_lane(1, 6).
 
 speed_limit(10, 6).
 
-obj_meta(1, 12, 1, none, 6).
-obj_meta(2, 48, 1, none, 6).
+obj_meta(1, car, 12, 1, none, 6).
+obj_meta(2, car, 48, 1, none, 6).
 
 lanes([1,2,3], 6).
 traffic_light(red, 6).
@@ -113,8 +114,8 @@ self_lane(1, 7).
 
 speed_limit(10, 7).
 
-obj_meta(1, 12, 1, none, 7).
-obj_meta(2, 68, 1, none, 7).
+obj_meta(1, car, 12, 1, none, 7).
+obj_meta(2, car, 68, 1, none, 7).
 
 lanes([1,2,3], 7).
 traffic_light(red, 7).
@@ -129,7 +130,7 @@ self_lane(1, 8).
 
 speed_limit(10, 8).
 
-obj_meta(1, 7, 1, none, 8).
+obj_meta(1, car, 7, 1, none, 8).
 
 lanes([1,2,3], 8).
 traffic_light(red, 8).
@@ -144,7 +145,7 @@ self_lane(1, 9).
 
 speed_limit(10, 9).
 
-obj_meta(1, 8, 1, none, 9).
+obj_meta(1, car, 8, 1, none, 9).
 
 lanes([1,2,3], 9).
 traffic_light(green, 9).
@@ -159,7 +160,7 @@ self_lane(1, 10).
 
 speed_limit(10, 10).
 
-obj_meta(1, 12, 1, none, 10).
+obj_meta(1, car, 12, 1, none, 10).
 
 lanes([1,2,3], 10).
 traffic_light(green, 10).
@@ -174,7 +175,7 @@ self_lane(1, 11).
 
 speed_limit(10, 11).
 
-obj_meta(1, 18, 1, none, 11).
+obj_meta(1, car, 18, 1, none, 11).
 
 lanes([1,2,3], 11).
 traffic_light(green, 11).
@@ -189,7 +190,7 @@ self_lane(1, 12).
 
 speed_limit(10, 12).
 
-obj_meta(1, 21, 1, none, 12).
+obj_meta(1, car, 21, 1, none, 12).
 
 lanes([1,2,3], 12).
 traffic_light(none, 12).
