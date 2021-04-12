@@ -177,7 +177,7 @@ lanes([1,2,3], 12).
 traffic_light(none, 12).
 
 intent(stay_in_rightmost_lane, 12).
-expected_action(none, 12).
+expected_action(cruise, 12).
 
 %%% FRAME 13 %%%
 self_speed(16, 13).
@@ -191,4 +191,4 @@ lanes([1,2,3], 13).
 traffic_light(none, 13).
 
 intent(stay_in_rightmost_lane, 13).
-expected_action(none, 13).
+expected_action(cruise, 13).

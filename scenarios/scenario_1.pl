@@ -20,7 +20,7 @@ lanes([1,2,3], 1).
 % traffic_sign(sign, timestamp)
 %traffic_signs(stop, 1).
 
-test_pred(1, 2).
+%test_pred(1, 2).
 
 % traffic_light(<light>, timestamp) light - red, yellow, green, none
 traffic_light(none, 1).
@@ -59,7 +59,7 @@ lanes([1,2,3], 3).
 traffic_light(none, 3).
 
 intent(continue_on_lane, 3).
-expected_action(none, 3).
+expected_action(cruise, 3).
 
 %%% FRAME 4 %%%
 self_speed(9, 4).
@@ -105,7 +105,7 @@ lanes([1,2,3], 6).
 traffic_light(red, 6).
 
 intent(continue_on_lane, 6).
-expected_action(none, 6).
+expected_action(cruise, 6).
 
 %%% FRAME 7 %%%
 
@@ -121,7 +121,7 @@ lanes([1,2,3], 7).
 traffic_light(red, 7).
 
 intent(continue_on_lane, 7).
-expected_action(none, 7).
+expected_action(cruise, 7).
 
 %%% FRAME 8 %%%
 

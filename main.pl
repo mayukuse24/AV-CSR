@@ -14,7 +14,7 @@ suggest_decision(T, change_lane_left) :- self_lane(SLid, T), nonmv_ahead_in_lane
 suggest_decision(T, change_lane_right) :- intent(stay_in_rightmost_lane, T), change_lane_constraints(right, T), sleep(0.5), !.
 suggest_decision(T, change_lane_right) :- self_lane(SLid, T), nonmv_ahead_in_lane(SLid, 20, T), change_lane_constraints(right, T), sleep(0.5), !.
 suggest_decision(T, accelerate) :- acc_constraints(T), sleep(0.5), !.
-suggest_decision(T, none) :- sleep(0.5).
+suggest_decision(T, cruise) :- sleep(0.5).
 
 change_lane_constraints(left, T) :- self_lane(SLid, T), lanes([LeftmostLid | Lids], T), not(SLid == LeftmostLid), 
                                     LLid is SLid - 1, not(obstacle_ahead_in_lane(LLid, 10, T)).
