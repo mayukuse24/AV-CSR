@@ -12,7 +12,7 @@ obj_meta(2, car, 5, 2, none, 1).
 lanes([1,2,3], 1).
 traffic_light(none, 1).
 
-intent(continue_on_lane, 1).
+intent(continue_in_lane, 1).
 expected_action(accelerate, 1).
 
 %%% FRAME 2 %%%
@@ -88,7 +88,7 @@ lanes([1,2,3], 6).
 traffic_light(none, 6).
 
 intent(stay_in_rightmost_lane, 6).
-expected_action(break, 6).
+expected_action(brake, 6).
 
 %%% FRAME 7 %%%
 self_speed(10, 7).

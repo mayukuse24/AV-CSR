@@ -26,7 +26,7 @@ lanes([1,2,3], 1).
 traffic_light(none, 1).
 
 % intent(<intent>, timestamp) - used for guiding car based on the route to destination
-intent(continue_on_lane, 1).
+intent(continue_in_lane, 1).
 
 % expected_action(<action>, timestamp) - used for testing suggested action
 expected_action(accelerate, 1).
@@ -43,11 +43,11 @@ obj_meta(2, car, 41, 1, none, 2).
 lanes([1,2,3], 2).
 traffic_light(none, 2).
 
-intent(continue_on_lane, 2).
+intent(continue_in_lane, 2).
 expected_action(accelerate, 2).
 
 %%% FRAME 3 %%%
-self_speed(11, 3).
+self_speed(9, 3).
 self_lane(1, 3).
 
 speed_limit(10, 3).
@@ -58,7 +58,7 @@ obj_meta(2, car, 37, 1, none, 3).
 lanes([1,2,3], 3).
 traffic_light(none, 3).
 
-intent(continue_on_lane, 3).
+intent(continue_in_lane, 3).
 expected_action(cruise, 3).
 
 %%% FRAME 4 %%%
@@ -67,13 +67,13 @@ self_lane(1, 4).
 
 speed_limit(10, 4).
 
-obj_meta(1, car, 9, 1, none, 4).
+obj_meta(1, car, 8, 1, none, 4).
 obj_meta(2, car, 41, 1, none, 4).
 
 lanes([1,2,3], 4).
 traffic_light(none, 4).
 
-intent(continue_on_lane, 4).
+intent(continue_in_lane, 4).
 expected_action(brake, 4).
 
 %%% FRAME 5 %%%
@@ -88,7 +88,7 @@ obj_meta(2, car, 40, 1, none, 5).
 lanes([1,2,3], 5).
 traffic_light(none, 5).
 
-intent(continue_on_lane, 5).
+intent(continue_in_lane, 5).
 expected_action(brake, 5).
 
 %%% FRAME 6 %%%
@@ -104,7 +104,7 @@ obj_meta(2, car, 48, 1, none, 6).
 lanes([1,2,3], 6).
 traffic_light(red, 6).
 
-intent(continue_on_lane, 6).
+intent(continue_in_lane, 6).
 expected_action(cruise, 6).
 
 %%% FRAME 7 %%%
@@ -120,7 +120,7 @@ obj_meta(2, car, 68, 1, none, 7).
 lanes([1,2,3], 7).
 traffic_light(red, 7).
 
-intent(continue_on_lane, 7).
+intent(continue_in_lane, 7).
 expected_action(cruise, 7).
 
 %%% FRAME 8 %%%
@@ -135,7 +135,7 @@ obj_meta(1, car, 7, 1, none, 8).
 lanes([1,2,3], 8).
 traffic_light(red, 8).
 
-intent(continue_on_lane, 8).
+intent(continue_in_lane, 8).
 expected_action(brake, 8).
 
 %%% FRAME 9 %%%
@@ -150,7 +150,7 @@ obj_meta(1, car, 8, 1, none, 9).
 lanes([1,2,3], 9).
 traffic_light(green, 9).
 
-intent(continue_on_lane, 9).
+intent(continue_in_lane, 9).
 expected_action(brake, 9).
 
 %%% FRAME 10 %%%
@@ -165,7 +165,7 @@ obj_meta(1, car, 12, 1, none, 10).
 lanes([1,2,3], 10).
 traffic_light(green, 10).
 
-intent(continue_on_lane, 10).
+intent(continue_in_lane, 10).
 expected_action(accelerate, 10).
 
 %%% FRAME 11 %%%
@@ -180,7 +180,7 @@ obj_meta(1, car, 18, 1, none, 11).
 lanes([1,2,3], 11).
 traffic_light(green, 11).
 
-intent(continue_on_lane, 11).
+intent(continue_in_lane, 11).
 expected_action(accelerate, 11).
 
 %%% FRAME 12 %%%
@@ -195,5 +195,5 @@ obj_meta(1, car, 21, 1, none, 12).
 lanes([1,2,3], 12).
 traffic_light(none, 12).
 
-intent(continue_on_lane, 12).
+intent(continue_in_lane, 12).
 expected_action(accelerate, 12).
