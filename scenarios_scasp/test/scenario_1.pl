@@ -1,34 +1,21 @@
 :-style_check(-discontiguous).
 
 %%% FRAME 1 %%%
-% self_speed(speed, timestamp).
 self_speed(5, 1).
 
-% self_lane(lane id, timestamp).
 self_lane(1, 1).
 
-% speed_limit(speed (metres/s), timestamp)
 speed_limit(10, 1).
 
-% obj_meta(object id, object type, depth (metres), lane id, indicator, timestamp)
 obj_meta(1, 1, car, 22, 1, none).
 obj_meta(1, 2, car, 45, 1, none).
 
-% lane([lane ids]], timestamp) - leftmost lane id = 1
 lanes([1,2,3], 1).
 
-% traffic_sign(sign, timestamp)
-%traffic_signs(stop, 1).
-
-%test_pred(1, 2).
-
-% traffic_light(<light>, timestamp) light - red, yellow, green, none
 traffic_light(none, 1).
 
-% intent(<intent>, timestamp) - used for guiding car based on the route to destination
 intent(continue_in_lane, 1).
 
-% expected_action(<action>, timestamp) - used for testing suggested action
 expected_action(accelerate, 1).
 
 %%% FRAME 2 %%%

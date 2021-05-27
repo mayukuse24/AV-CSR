@@ -1,6 +1,7 @@
 %:- dynamic obj_meta/6, lanes/2, intent/2, traffic_light/2, expected_action/2, speed_limit/2, self_speed/2, self_lane/2.
 
-#include 'scenarios_scasp/scenario_3.pl'.
+%#include 'scenarios_scasp/scenario_3.pl'.
+#include 'scenarios_scasp/kitty/2011_09_26_drive_0032.pl'. 
 #include 'rules/entities.pl'.
 
 action(change_lane_left). action(change_lane_right).
@@ -51,6 +52,7 @@ left_lane_clear(T) :- self_lane(SLid, T), lanes([LeftmostLid | Lids], T), SLid \
 % Change lane right conditions/constraints
 change_lane_right_conditions(T) :- self_lane(SLid, T), nonmv_ahead_in_lane(T, SLid, 20, OType), neg_can_drive_over(OType), can_swerve_around(OType).
 change_lane_right_conditions(T) :- intent(stay_in_rightmost_lane, T).
+change_lane_right_conditions(T) :- left_sensor(Dist, T), Dist #=< 0.5.
 
 neg_action_constraints(change_lane_right, T) :- not right_lane_clear(T).
 
