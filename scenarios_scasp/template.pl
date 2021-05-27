@@ -1,9 +1,9 @@
-%%% FRAME i %%%
+%%% FRAME <i> %%%
 
-% self_speed(speed, timestamp).
+% self_speed(speed, timestamp) - defines the current speed of AV
 self_speed(5, i).
 
-% self_lane(lane id, timestamp).
+% self_lane(lane id, timestamp) - defines the current lane of AV
 self_lane(1, i).
 
 % speed_limit(speed (metres/s), timestamp)
@@ -22,7 +22,7 @@ traffic_signs(stop, i).
 % traffic_light(<light>, timestamp) light - red, yellow, green, none
 traffic_light(none, i).
 
-% intent(<intent>, timestamp) - used for guiding car based on the route to destination
+% intent(<intent>, timestamp) - short term goal used for guiding car based on the route to destination
 intent(continue_in_lane, i).
 
 % expected_action(<action>, timestamp) - used for testing action suggested by the AV-CSR
