@@ -124,7 +124,7 @@ lanes([1,2,3], 7).
 
 % NOTE: need an entry here that provides radar info
 % to detect objects/barrier beside/near the vehicle
-%left_sensor(0.3, 7).
+left_sensor(0.3, 7).
 
 traffic_light(none, 7).
 

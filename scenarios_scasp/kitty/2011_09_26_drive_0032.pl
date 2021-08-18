@@ -1,4 +1,4 @@
-
+% Basic driving simple traffic, right lane change scenario
 
 %%% FRAME 1 - 0.png %%%
 self_speed(14.8, 1).
@@ -148,25 +148,6 @@ traffic_light(green, 8).
 intent(continue_in_lane, 8).
 
 expected_action(accelerate, 8).
-
-%%% FRAME 9 - 240.png %%%
-
-self_speed(10.5, 9).
-
-self_lane(2, 9).
-
-speed_limit(20, 9).
-
-obj_meta(9, 1, car, 12, 1, none).
-obj_meta(9, 2, car, 7, 2, none).
-
-lanes([1,2,3], 9).
-
-traffic_light(green, 9).
-
-intent(continue_in_lane, 9).
-
-expected_action(accelerate, 9).
 
 %%% FRAME 9 - 240.png %%%
 

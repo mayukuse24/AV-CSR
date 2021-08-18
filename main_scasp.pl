@@ -1,9 +1,11 @@
 %:- dynamic obj_meta/6, lanes/2, intent/2, traffic_light/2, expected_action/2, speed_limit/2, self_speed/2, self_lane/2.
 
-%#include 'scenarios_scasp/scenario_3.pl'.
+%#include 'scenarios_scasp/test/scenario_1.pl'.
 #include 'scenarios_scasp/kitty/2011_09_26_drive_0032.pl'. 
+%#include 'scenarios_scasp/av_fault/tesla_concrete_barrier.pl'. 
 #include 'rules/entities.pl'.
 
+action(turn_left). action(turn_right).
 action(change_lane_left). action(change_lane_right).
 action(brake). action(accelerate). action(cruise).
 
@@ -23,9 +25,17 @@ action_constraints(change_lane_left, T) :- change_lane_left_conditions(T), not a
                                            not neg_action_constraints(change_lane_left, T).
 action_constraints(change_lane_right, T) :- change_lane_right_conditions(T), not ab(d_action_constraints(change_lane_right, T)),
                                            not neg_action_constraints(change_lane_right, T).
+action_constraints(turn_left, T) :- turn_left_conditions(T), not ab(d_action_constraints(turn_left, T)),
+                                           not neg_action_constraints(turn_left, T).
+action_constraints(turn_right, T) :- turn_right_conditions(T), not ab(d_action_constraints(turn_right, T)),
+                                           not neg_action_constraints(turn_right, T).
 
 % Brake conditions/constraints
 brake_conditions(T) :- self_lane(SLid, T), obstacle_ahead_in_lane(T, SLid, 10, OType), neg_can_drive_over(OType).
+brake_conditions(T) :- traffic_sign(stop, T), intersection(_, _, arriving, T).
+brake_conditions(T) :- intent(enter_left_lane, T), intersection(_, _, at, T).
+brake_conditions(T) :- intent(enter_right_lane, T), intersection(_, _, at, T).
+brake_conditions(T) :- intent(merge_into_left_lane, T), not left_lane_clear(T).
 %
 
 % Accelerate conditions/constraints
@@ -42,10 +52,11 @@ cruise_conditions(T).
 % Change lane left conditions/constraints
 change_lane_left_conditions(T) :- self_lane(SLid, T), nonmv_ahead_in_lane(T, SLid, 20, OType), neg_can_drive_over(OType), can_swerve_around(OType).
 change_lane_left_conditions(T) :- intent(stay_in_leftmost_lane, T).
+change_lane_left_conditions(T) :- intent(merge_into_left_lane, T).
 
 neg_action_constraints(change_lane_left, T) :- not left_lane_clear(T).
 
-left_lane_clear(T) :- self_lane(SLid, T), lanes([LeftmostLid | Lids], T), SLid \= LeftmostLid, LLid is SLid - 1,
+left_lane_clear(T) :- self_lane(SLid, T), lanes(current, [LeftmostLid | Lids], T), SLid \= LeftmostLid, LLid is SLid - 1,
                       not neg_lane_clear(T, LLid, 10).
 %
 
@@ -56,12 +67,26 @@ change_lane_right_conditions(T) :- left_sensor(Dist, T), Dist #=< 0.5.
 
 neg_action_constraints(change_lane_right, T) :- not right_lane_clear(T).
 
-right_lane_clear(T) :- self_lane(SLid, T), lanes(Lids, T), last(Lids, RightmostLid), SLid \= RightmostLid, RLid is SLid + 1,
+right_lane_clear(T) :- self_lane(SLid, T), lanes(current, Lids, T), last(Lids, RightmostLid), SLid \= RightmostLid, RLid is SLid + 1,
                        not neg_lane_clear(T, RLid, 10).
 %
 
+% Turn left conditions/constraints
+turn_left_conditions(T) :- intent(enter_left_lane, T).
+%
+
+% Turn right conditions/constraints
+turn_right_conditions(T) :- intent(enter_right_lane, T).
+
+neg_action_constraints(turn_right, T) :- self_lane(SLid, T), lanes(current, Lids, T), last(Lids, RightmostLid), SLid \= RightmostLid.
+neg_action_constraints(turn_right, T) :- self_pred_path(SPath, T), obj_pred_path(Oid, OPath, T), path_intersects(SPath, OPath).
+%neg_action_constraints(turn_right, T) :- 
+
+%
+
 % Check if lane Lid is not clear for distance Dist ahead
-neg_lane_clear(T, Lid, Dist) :- class(OType), Depth #> 0, Depth #< Dist, obj_meta(T, _, OType, Depth, Lid, none).
+neg_lane_clear(T, Lid, Dist) :- class(OType), DepthY #> -10, % TODO: replace hardcoded distance by computed stopping distance
+                                DepthY #< Dist, obj_meta(T, _, OType, pos(_, DepthY), lane(current, Lid), none).
 
 
 % Check if obstacle within Dist ahead in lane Lid and return Obstacle type.
@@ -71,11 +96,11 @@ neg_lane_clear(T, Lid, Dist) :- class(OType), Depth #> 0, Depth #< Dist, obj_met
 obstacle_ahead_in_lane(T, Lid, Dist, OType) :- mv_ahead_in_lane(T, Lid, Dist, OType).
 obstacle_ahead_in_lane(T, Lid, Dist, OType) :- nonmv_ahead_in_lane(T, Lid, Dist, OType).
 
-nonmv_ahead_in_lane(T, Lid, Dist, OType) :- class(OType), subclass(OType, non_automobile), Depth #> 0, Depth #< Dist, 
-                                            obj_meta(T, _, OType, Depth, Lid, none).
+nonmv_ahead_in_lane(T, Lid, Dist, OType) :- class(OType), subclass(OType, non_automobile), DepthY #> 0, DepthY #< Dist, 
+                                            obj_meta(T, _, OType, pos(_, DepthY), lane(current, Lid), none).
 
-mv_ahead_in_lane(T, Lid, Dist, OType) :- class(OType), subclass(OType, automobile), Depth #> 0, Depth #< Dist,
-                                         obj_meta(T, _, OType, Depth, Lid, none).
+mv_ahead_in_lane(T, Lid, Dist, OType) :- class(OType), subclass(OType, automobile), DepthY #> 0, DepthY #< Dist,
+                                         obj_meta(T, _, OType, pos(_, DepthY), lane(current, Lid), none).
 
 %above_speed_limit(T) :- self_speed(S, T), speed_limit(SL, T), S #>= SL.
 below_speed_limit(T) :- self_speed(S, T), speed_limit(SL, T), S #=< SL.

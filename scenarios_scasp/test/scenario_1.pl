@@ -7,10 +7,10 @@ self_lane(1, 1).
 
 speed_limit(10, 1).
 
-obj_meta(1, 1, car, 22, 1, none).
-obj_meta(1, 2, car, 45, 1, none).
+obj_meta(1, 1, car, pos(0, 22), lane(current, 1), none).
+obj_meta(1, 2, car, pos(1, 45), lane(current, 1), none).
 
-lanes([1,2,3], 1).
+lanes(current, [1,2,3], 1).
 
 traffic_light(none, 1).
 
@@ -24,10 +24,11 @@ self_lane(1, 2).
 
 speed_limit(10, 2).
 
-obj_meta(2, 1, car, 20, 1, none).
-obj_meta(2, 2, car, 41, 1, none).
+obj_meta(2, 1, car, pos(0, 20), lane(current, 1), none).
+obj_meta(2, 2, car, pos(0, 41), lane(current, 1), none).
 
-lanes([1,2,3], 2).
+lanes(current, [1,2,3], 2).
+
 traffic_light(none, 2).
 
 intent(continue_in_lane, 2).
@@ -39,10 +40,11 @@ self_lane(1, 3).
 
 speed_limit(10, 3).
 
-obj_meta(3, 1, car, 15, 1, none).
-obj_meta(3, 2, car, 37, 1, none).
+obj_meta(3, 1, car, pos(0, 15), lane(current, 1), none).
+obj_meta(3, 2, car, pos(0, 37), lane(current, 1), none).
 
-lanes([1,2,3], 3).
+lanes(current, [1,2,3], 3).
+
 traffic_light(none, 3).
 
 intent(continue_in_lane, 3).
@@ -54,10 +56,11 @@ self_lane(1, 4).
 
 speed_limit(10, 4).
 
-obj_meta(4, 1, car, 8, 1, none).
-obj_meta(4, 2, car, 41, 1, none).
+obj_meta(4, 1, car, pos(0, 8), lane(current, 1), none).
+obj_meta(4, 2, car, pos(0, 41), lane(current, 1), none).
 
-lanes([1,2,3], 4).
+lanes(current, [1,2,3], 4).
+
 traffic_light(none, 4).
 
 intent(continue_in_lane, 4).
