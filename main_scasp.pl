@@ -41,7 +41,7 @@ brake_conditions(T) :- intent(merge_into_left_lane, T), not left_lane_clear(T).
 % Accelerate conditions/constraints
 acc_conditions(T) :- below_speed_limit(T).
 
-neg_action_constraints(accelerate, T) :- self_lane(SLid, T), neg_lane_clear(T, SLid, 10).
+neg_action_constraints(accelerate, T) :- self_lane(SLid, T), not lane_clear(T, SLid, 10).
 neg_action_constraints(accelerate, T) :- traffic_light(red, T).
 %
 
@@ -57,7 +57,7 @@ change_lane_left_conditions(T) :- intent(merge_into_left_lane, T).
 neg_action_constraints(change_lane_left, T) :- not left_lane_clear(T).
 
 left_lane_clear(T) :- self_lane(SLid, T), lanes(current, [LeftmostLid | Lids], T), SLid \= LeftmostLid, LLid is SLid - 1,
-                      not neg_lane_clear(T, LLid, 10).
+                      lane_clear(T, LLid, 10).
 %
 
 % Change lane right conditions/constraints
@@ -68,7 +68,7 @@ change_lane_right_conditions(T) :- left_sensor(Dist, T), Dist #=< 0.5.
 neg_action_constraints(change_lane_right, T) :- not right_lane_clear(T).
 
 right_lane_clear(T) :- self_lane(SLid, T), lanes(current, Lids, T), last(Lids, RightmostLid), SLid \= RightmostLid, RLid is SLid + 1,
-                       not neg_lane_clear(T, RLid, 10).
+                       lane_clear(T, RLid, 10).
 %
 
 % Turn left conditions/constraints
@@ -86,7 +86,10 @@ neg_action_constraints(turn_right, T) :- self_pred_path(SPath, T), obj_pred_path
 
 % Check if lane Lid is not clear for distance Dist ahead
 neg_lane_clear(T, Lid, Dist) :- class(OType), DepthY #> -10, % TODO: replace hardcoded distance by computed stopping distance
-                                DepthY #< Dist, obj_meta(T, _, OType, pos(_, DepthY), lane(current, Lid), none).
+                                DepthY #< Dist, obj_meta(T, _, OType, DepthY, Lid, none).
+
+lane_clear(T, Lid, Dist) :- class(OType), DepthY #> -10, % TODO: replace hardcoded distance by computed stopping distance
+                            DepthY #< Dist, not obj_meta(T, _, OType, DepthY, Lid, none).
 
 
 % Check if obstacle within Dist ahead in lane Lid and return Obstacle type.
@@ -97,10 +100,10 @@ obstacle_ahead_in_lane(T, Lid, Dist, OType) :- mv_ahead_in_lane(T, Lid, Dist, OT
 obstacle_ahead_in_lane(T, Lid, Dist, OType) :- nonmv_ahead_in_lane(T, Lid, Dist, OType).
 
 nonmv_ahead_in_lane(T, Lid, Dist, OType) :- class(OType), subclass(OType, non_automobile), DepthY #> 0, DepthY #< Dist, 
-                                            obj_meta(T, _, OType, pos(_, DepthY), lane(current, Lid), none).
+                                            obj_meta(T, _, OType, DepthY, Lid, none).
 
 mv_ahead_in_lane(T, Lid, Dist, OType) :- class(OType), subclass(OType, automobile), DepthY #> 0, DepthY #< Dist,
-                                         obj_meta(T, _, OType, pos(_, DepthY), lane(current, Lid), none).
+                                         obj_meta(T, _, OType, DepthY, Lid, none).
 
 %above_speed_limit(T) :- self_speed(S, T), speed_limit(SL, T), S #>= SL.
 below_speed_limit(T) :- self_speed(S, T), speed_limit(SL, T), S #=< SL.

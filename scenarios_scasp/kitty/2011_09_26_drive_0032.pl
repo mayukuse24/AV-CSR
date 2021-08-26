@@ -10,7 +10,7 @@ speed_limit(20, 1).
 obj_meta(1, 1, truck, 5, 3, none).
 obj_meta(1, 2, car, 20, 2, none).
 
-lanes([1,2], 1).
+lanes(current, [1,2], 1).
 
 traffic_light(none, 1).
 
@@ -28,7 +28,7 @@ speed_limit(20, 2).
 obj_meta(2, 1, truck, 2, 3, none).
 obj_meta(2, 2, car, 20, 2, none).
 
-lanes([1,2], 2).
+lanes(current, [1,2], 2).
 
 traffic_light(none, 2).
 
@@ -46,7 +46,7 @@ speed_limit(20, 3).
 
 obj_meta(3, 2, car, 25, 2, none).
 
-lanes([1,2], 3).
+lanes(current, [1,2], 3).
 
 traffic_light(none, 3).
 
@@ -65,7 +65,7 @@ speed_limit(20, 4).
 obj_meta(4, 1, car, 28, 1, none).
 obj_meta(4, 2, car, 25, 2, none).
 
-lanes([1,2], 4).
+lanes(current, [1,2], 4).
 
 traffic_light(none, 4).
 
@@ -84,7 +84,7 @@ speed_limit(20, 5).
 obj_meta(5, 1, car, 22, 1, none).
 obj_meta(5, 2, car, 20, 2, none).
 
-lanes([1,2], 5).
+lanes(current, [1,2], 5).
 
 traffic_light(none, 5).
 
@@ -103,7 +103,7 @@ speed_limit(20, 6).
 obj_meta(6, 1, car, 17, 1, none).
 obj_meta(6, 2, car, 15, 2, none).
 
-lanes([1,2,3], 6).
+lanes(current, [1,2,3], 6).
 
 traffic_light(none, 6).
 
@@ -122,7 +122,7 @@ speed_limit(20, 7).
 obj_meta(7, 1, car, 12, 1, none).
 obj_meta(7, 2, car, 11, 2, none).
 
-lanes([1,2,3], 7).
+lanes(current, [1,2,3], 7).
 
 traffic_light(green, 7).
 
@@ -141,13 +141,13 @@ speed_limit(20, 8).
 obj_meta(8, 1, car, 10, 1, none).
 obj_meta(8, 2, car, 7, 2, none).
 
-lanes([1,2,3], 8).
+lanes(current, [1,2,3], 8).
 
 traffic_light(green, 8).
 
 intent(continue_in_lane, 8).
 
-expected_action(accelerate, 8).
+expected_action(brake, 8).
 
 %%% FRAME 9 - 240.png %%%
 
@@ -160,13 +160,13 @@ speed_limit(20, 9).
 obj_meta(9, 1, car, 12, 1, none).
 obj_meta(9, 2, car, 7, 2, none).
 
-lanes([1,2,3], 9).
+lanes(current, [1,2,3], 9).
 
 traffic_light(green, 9).
 
 intent(continue_in_lane, 9).
 
-expected_action(accelerate, 9).
+expected_action(brake, 9).
 
 %%% FRAME 10 - 260.png %%%
 
@@ -179,13 +179,13 @@ speed_limit(20, 10).
 obj_meta(10, 1, car, 12, 1, none).
 obj_meta(10, 2, car, 9, 2, none).
 
-lanes([1,2], 10).
+lanes(current, [1,2], 10).
 
 traffic_light(none, 10).
 
 intent(continue_in_lane, 10).
 
-expected_action(accelerate, 10).
+expected_action(brake, 10).
 
 %%% FRAME 11 - 290.png %%%
 
@@ -198,7 +198,7 @@ speed_limit(20, 11).
 obj_meta(11, 1, car, 15, 1, none).
 obj_meta(11, 2, car, 13, 2, none).
 
-lanes([1,2], 11).
+lanes(current, [1,2], 11).
 
 traffic_light(none, 11).
 
@@ -218,7 +218,7 @@ obj_meta(12, 1, car, 15, 1, none).
 obj_meta(12, 2, car, 13, 2, none).
 obj_meta(12, 3, car, 1, 1, none).
 
-lanes([1,2], 12).
+lanes(current, [1,2], 12).
 
 traffic_light(none, 12).
 
@@ -238,7 +238,7 @@ obj_meta(13, 1, car, 12, 1, none).
 obj_meta(13, 2, car, 13, 3, none).
 obj_meta(13, 3, car, 4, 2, none).
 
-lanes([1,2,3], 13).
+lanes(current, [1,2,3], 13).
 
 traffic_light(none, 13).
 
@@ -259,7 +259,7 @@ obj_meta(14, 2, car, 16, 2, none).
 obj_meta(14, 3, car, 6, 2, none).
 obj_meta(14, 4, truck, 19, 3, none).
 
-lanes([1,2,3], 14).
+lanes(current, [1,2,3], 14).
 
 traffic_light(none, 14).
 
@@ -280,7 +280,7 @@ obj_meta(15, 2, car, 17, 2, none).
 obj_meta(15, 3, car, 7, 2, none).
 obj_meta(15, 4, truck, 19, 3, none).
 
-lanes([1,2,3], 15).
+lanes(current, [1,2,3], 15).
 
 traffic_light(none, 15).
 
@@ -302,7 +302,7 @@ obj_meta(16, 3, car, 6, 2, none).
 obj_meta(16, 4, truck, 19, 3, none).
 obj_meta(16, 5, car, 20, 1, none).
 
-lanes([1,2,3], 16).
+lanes(current, [1,2,3], 16).
 
 traffic_light(none, 16).
 
@@ -323,7 +323,7 @@ obj_meta(17, 2, car, 17, 2, none).
 obj_meta(17, 3, car, 8, 2, none).
 obj_meta(17, 4, truck, 20, 3, none).
 
-lanes([1,2,3], 17).
+lanes(current, [1,2,3], 17).
 
 traffic_light(none, 17).
 
