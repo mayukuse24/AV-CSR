@@ -9,6 +9,7 @@ class(non_automobile).
 class(car).
 class(bike).
 class(truck).
+class(bicycle).
 %
 
 %% NON AUTOMOBILE %%
@@ -25,6 +26,7 @@ subclass(non_automobile, entity).
 subclass(car, automobile).
 subclass(bike, automobile).
 subclass(truck, automobile).
+subclass(bicycle, automobile).
 
 subclass(pedestrian, non_automobile).
 subclass(traffic_light, non_automobile).
