@@ -15,7 +15,6 @@ start_drive(ITimestamp, FTimestamp) :- ITimestamp #< FTimestamp, expected_action
 
 % Select one action for every frame/timestamp T
 suggest_action(Act, T) :- action(Act), not neg_suggest_action(Act, T), action_constraints(Act, T).
-neg_suggest_action(Act, T) :- action(Act), not suggest_action(Act, T).
 
 % Default rule structure for each action
 action_constraints(brake, T) :- brake_conditions(T), not ab(d_action_constraints(brake, T)).

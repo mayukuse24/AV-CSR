@@ -7,8 +7,8 @@ self_lane(1, 1).
 
 speed_limit(20, 1).
 
-obj_meta(1, 1, truck, 5, 3, none).
-obj_meta(1, 2, car, 20, 2, none).
+obj_meta(1, 1, truck, pos(6, 5), lane(current, 3), none).
+obj_meta(1, 2, car, pos(3, 20), lane(current, 2), none).
 
 lanes(current, [1,2], 1).
 
@@ -25,8 +25,8 @@ self_lane(1, 2).
 
 speed_limit(20, 2).
 
-obj_meta(2, 1, truck, 2, 3, none).
-obj_meta(2, 2, car, 20, 2, none).
+obj_meta(2, 1, truck, pos(6, 2), lane(current, 3), none).
+obj_meta(2, 2, car, pos(3, 20), lane(current, 2), none).
 
 lanes(current, [1,2], 2).
 
@@ -44,7 +44,7 @@ self_lane(2, 3).
 
 speed_limit(20, 3).
 
-obj_meta(3, 2, car, 25, 2, none).
+obj_meta(3, 2, car, pos(3, 25), lane(current, 2), none).
 
 lanes(current, [1,2], 3).
 
@@ -62,8 +62,8 @@ self_lane(2, 4).
 
 speed_limit(20, 4).
 
-obj_meta(4, 1, car, 28, 1, none).
-obj_meta(4, 2, car, 25, 2, none).
+obj_meta(4, 1, car, pos(0, 28), lane(current, 1), none).
+obj_meta(4, 2, car, pos(3, 25), lane(current, 2), none).
 
 lanes(current, [1,2], 4).
 
