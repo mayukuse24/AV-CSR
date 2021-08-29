@@ -73,5 +73,5 @@ traffic_light(none, 3).
 
 intent(enter_right_lane, 3).
 
-expected_action(enter_right_lane, 3).
+expected_action(turn_right, 3).
 
