@@ -1,4 +1,4 @@
-% Basic driving simple traffic, city scenario
+% City - Basic driving simple traffic
 
 %%% FRAME 1 - 50.png %%%
 self_speed(6, 1).

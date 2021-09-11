@@ -1,4 +1,4 @@
-% Right turn avoiding incoming cyclist, pedestrians
+% Campus - Right turn avoiding incoming cyclist, pedestrians
 
 %%% FRAME 1 - 0.png %%%
 self_speed(0, 1).

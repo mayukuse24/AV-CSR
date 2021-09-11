@@ -1,4 +1,4 @@
-% Left turn at t-intersection, turn before approaching car.
+% Residential - Left turn at t-intersection, turn before approaching car.
 
 %%% FRAME 1 - 640.png %%%
 self_speed(5, 1).

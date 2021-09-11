@@ -1,4 +1,4 @@
-% Left turn at four-way, wait for car incoming from left
+% Residential - Left turn at four-way, wait for car incoming from left
 % to pass before turning.
 
 %%% FRAME 1 - 60.png %%%

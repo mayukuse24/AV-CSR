@@ -1,4 +1,4 @@
-% Left turn at singalized intersection, turn after truck leaves
+% Road - Left turn at singalized intersection, turn after truck leaves
 % and green signal.
 
 %%% FRAME 1 - 70.png %%%

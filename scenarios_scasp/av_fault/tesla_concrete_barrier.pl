@@ -117,14 +117,14 @@ self_lane(1, 7).
 
 speed_limit(32, 7).
 
-obj_meta(7, 1, car, 4, 3, none).
-obj_meta(7, 2, car, 12, 2, none).
+obj_meta(7, 1, car, pos(7, 4), lane(current, 3), none).
+obj_meta(7, 2, car, pos(4, 12), lane(current, 2), none).
 
-lanes([1,2,3], 7).
+lanes(current, [1,2,3], 7).
 
 % NOTE: need an entry here that provides radar info
 % to detect objects/barrier beside/near the vehicle
-left_sensor(0.3, 7).
+sensor(left, 0.3, 7).
 
 traffic_light(none, 7).
 
@@ -139,12 +139,12 @@ self_lane(1, 8).
 
 speed_limit(32, 8).
 
-obj_meta(8, 1, car, 6, 3, none).
-obj_meta(8, 2, car, 13, 2, none).
+obj_meta(8, 1, car, pos(7, 6), lane(current, 3), none).
+obj_meta(8, 2, car, pos(4, 13), lane(current, 2), none).
 
-lanes([1,2,3], 8).
+lanes(current, [1,2,3], 8).
 
-left_sensor(0.4, 8).
+sensor(left, 0.4, 8).
 
 traffic_light(none, 8).
 

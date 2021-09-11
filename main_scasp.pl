@@ -1,7 +1,7 @@
 %:- dynamic obj_meta/6, lanes/2, intent/2, traffic_light/2, expected_action/2, speed_limit/2, self_speed/2, self_lane/2.
 
 %#include 'scenarios_scasp/test/scenario_1.pl'.
-#include 'scenarios_scasp/kitty/2011_09_28_drive_0038.pl'. 
+#include 'scenarios_scasp/kitty/2011_09_26_drive_0051.pl'. 
 %#include 'scenarios_scasp/av_fault/tesla_concrete_barrier.pl'. 
 #include 'rules/entities.pl'.
 
@@ -33,6 +33,7 @@ brake_conditions(T) :- intent(enter_left_lane, T), intersection(_, _, at, T).
 brake_conditions(T) :- intent(enter_right_lane, T), intersection(_, _, at, T).
 brake_conditions(T) :- intent(merge_into_left_lane, T), not left_lane_clear(T).
 brake_conditions(T) :- self_pred_path(SPath, T), obj_pred_path(Oid, OPath, T), path_intersects(SPath, OPath).
+brake_conditions(T) :- sensor(front_left, Dist, T), Dist #=< 0.5.
 %
 
 % Accelerate conditions/constraints
@@ -60,7 +61,7 @@ left_lane_clear(T) :- self_lane(SLid, T), lanes(current, [LeftmostLid | Lids], T
 % Change lane right conditions/constraints
 change_lane_right_conditions(T) :- self_lane(SLid, T), nonmv_ahead_in_lane(T, SLid, 20, OType), neg_can_drive_over(OType), can_swerve_around(OType).
 change_lane_right_conditions(T) :- intent(stay_in_rightmost_lane, T).
-change_lane_right_conditions(T) :- left_sensor(Dist, T), Dist #=< 0.5.
+change_lane_right_conditions(T) :- sensor(left, Dist, T), Dist #=< 0.5.
 
 neg_action_constraints(change_lane_right, T) :- not right_lane_clear(T).
 

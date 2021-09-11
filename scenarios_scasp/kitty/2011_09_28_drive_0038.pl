@@ -1,4 +1,4 @@
-% Right turn avoiding incoming cyclist, pedestrians
+% Campus - Drive straight on a campus road with medium pedestrian traffic.
 
 %%% FRAME 1 - 20.png %%%
 self_speed(2, 1).
@@ -8,7 +8,6 @@ speed_limit(5, 1).
 
 obj_meta(1, 1, bicycle, pos(-3, 6), lane(oncoming, 1), none).
 obj_meta(1, 2, bicycle, pos(6, 8), lane(sidewalk_right, 1), none).
-obj_meta(1, 3, pedestrian, pos(2, 6), lane(sidewalk_right, 1), none).
 
 lanes(current, [1], 1).
 lanes(oncoming, [1], 1).
@@ -62,3 +61,5 @@ intent(continue_in_lane, 3).
 
 expected_action(brake, 3).
 
+
+% findall(OType, obj_meta(1, _, OType, pos(_, 6), _, none), Ls).

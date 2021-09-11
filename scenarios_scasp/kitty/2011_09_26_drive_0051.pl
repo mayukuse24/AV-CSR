@@ -1,4 +1,4 @@
-% Merge left at medium/high traffic condition
+% City - Merge left at medium/high traffic condition
 
 %%% FRAME 1 - 160.png %%%
 self_speed(15, 1).
