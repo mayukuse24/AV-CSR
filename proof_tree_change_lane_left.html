@@ -1,0 +1,467 @@
+<!doctype html>
+ <html>
+ <head>
+ <meta charset="utf-8">
+ <title>c(ASP) Justification</title>
+ <style>
+.treemenu li { list-style: none; }
+.treemenu .toggler { cursor: pointer; }
+.treemenu .toggler:before { display: inline-block; margin-right: 2pt; }
+li.tree-empty > .toggler { opacity: 0.3; cursor: default; }
+li.tree-empty > .toggler:before { content: " "; }
+li.tree-closed > .toggler:before {
+    content: "";
+    height: 0;
+    width: 0;
+    border-color: transparent blue;
+    border-style: solid;
+    border-width: 0.25em 0 0.25em 0.5em;
+}
+li.tree-opened > .toggler:before {
+    content: "";
+    height: 0;
+    width: 0;
+    border-color: blue transparent ;
+    border-style: solid;
+    border-width: 0.5em 0.25em 0 0.25em;
+}
+</style>
+ 
+ <link rel="icon" href="logo.ico">
+ 
+ </head>
+ 
+ <body style="font-size:15px;background: #ECECEC; margin:80px; color:#333;">
+ 
+<h3>Query:</h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I would like to know if<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'start_drive' holds (for 3, and 4)<br>
+
+<br>
+<h3>Answer:</h3>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Yes, I found that<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'start_drive' holds (for 3, and 4)<br>
+
+<br>
+
+<br><br>
+<h3> Justification: <button onclick="expand()">Expand All</button><button onclick="depth(+1)">+1</button><button onclick="depth(-1)">-1</button><button onclick="collapse()">Collapse All</button></h3>
+
+
+ <ul class="tree">
+
+
+     <li> 
+     'start_drive' holds (for 3, and 4), because
+         <ul>
+         <li> 
+         'expected_action' holds (for change_lane_left, and 3), and
+         </li> 
+         <li> 
+         'suggest_action' holds (for change_lane_left, and 3), because
+             <ul>
+             <li> 
+             'action' holds (for change_lane_left), and
+             </li> 
+             <li> 
+             there is no evidence that 'neg_suggest_action' holds (for change_lane_left, and 3), and
+             </li> 
+             <li> 
+             'action_constraints' holds (for change_lane_left, and 3), because
+                 <ul>
+                 <li> 
+                 'change_lane_left_conditions' holds (for 3), because
+                     <ul>
+                     <li> 
+                     'intent' holds (for merge_into_left_lane, and 3).
+                     </li> 
+                     </ul> 
+                 </li> 
+                 <li> 
+                 there is no evidence that 'neg_action_constraints' holds (for change_lane_left, and 3), because
+                     <ul>
+                     <li> 
+                     'left_lane_clear' holds (for 3), because
+                         <ul>
+                         <li> 
+                         'self_lane' holds (for 3, and 3), and
+                         </li> 
+                         <li> 
+                         'lanes' holds (for current, [1,2,3], and 3), and
+                         </li> 
+                         <li> 
+                         'is' holds (for 2, and 3-1), and
+                         </li> 
+                         <li> 
+                         there is no evidence that 'neg_lane_clear' holds (for 3, 2, and 10), because
+                             <ul>
+                             <li> 
+                             there is no evidence that 'class' holds (for Var0), with Var0 not equal automobile, bicycle, bike, car, entity, non_automobile, pedestrian, plastic_bag, roadblock, traffic_light, truck, nor unknown, and
+                             </li> 
+                             <li> 
+                             'class' holds (for automobile), and
+                             </li> 
+                             <li> 
+                             'class' holds (for automobile), justified above, and
+                             </li> 
+                             <li> 
+                             there is no evidence that 'obj_meta' holds (for 3, Var1, automobile, pos(Var2,Var3 | {Var3 #> -10,Var3 #< 10}), lane(current,2), and none), with Var1 not equal 1, and
+                             </li> 
+                             <li> 
+                             there is no evidence that 'obj_meta' holds (for 3, 1, automobile, pos(Var4,Var3 | {Var3 #> -10,Var3 #< 10}), lane(current,2), and none), and
+                             </li> 
+                             <li> 
+                             'class' holds (for bicycle), and
+                             </li> 
+                             <li> 
+                             'class' holds (for bicycle), justified above, and
+                             </li> 
+                             <li> 
+                             there is no evidence that 'obj_meta' holds (for 3, Var5, bicycle, pos(Var6,Var7 | {Var7 #> -10,Var7 #< 10}), lane(current,2), and none), with Var5 not equal 1, and
+                             </li> 
+                             <li> 
+                             there is no evidence that 'obj_meta' holds (for 3, 1, bicycle, pos(Var8,Var7 | {Var7 #> -10,Var7 #< 10}), lane(current,2), and none), and
+                             </li> 
+                             <li> 
+                             'class' holds (for bike), and
+                             </li> 
+                             <li> 
+                             'class' holds (for bike), justified above, and
+                             </li> 
+                             <li> 
+                             there is no evidence that 'obj_meta' holds (for 3, Var9, bike, pos(Var10,Var11 | {Var11 #> -10,Var11 #< 10}), lane(current,2), and none), with Var9 not equal 1, and
+                             </li> 
+                             <li> 
+                             there is no evidence that 'obj_meta' holds (for 3, 1, bike, pos(Var12,Var11 | {Var11 #> -10,Var11 #< 10}), lane(current,2), and none), and
+                             </li> 
+                             <li> 
+                             'class' holds (for car), and
+                             </li> 
+                             <li> 
+                             'class' holds (for car), justified above, and
+                             </li> 
+                             <li> 
+                             there is no evidence that 'obj_meta' holds (for 3, Var13, car, pos(Var14,Var15 | {Var15 #> -10,Var15 #< 10}), lane(current,2), and none), with Var13 not equal 1, and
+                             </li> 
+                             <li> 
+                             there is no evidence that 'obj_meta' holds (for 3, 1, car, pos(Var16 | {Var16 \= -4},Var15 | {Var15 #> -10,Var15 #< 10}), lane(current,2), and none), and
+                             </li> 
+                             <li> 
+                             there is no evidence that 'obj_meta' holds (for 3, 1, car, pos(-4,Var15 | {Var15 #> -10,Var15 #< 10}), lane(current,2), and none), and
+                             </li> 
+                             <li> 
+                             'class' holds (for entity), and
+                             </li> 
+                             <li> 
+                             'class' holds (for entity), justified above, and
+                             </li> 
+                             <li> 
+                             there is no evidence that 'obj_meta' holds (for 3, Var17, entity, pos(Var18,Var19 | {Var19 #> -10,Var19 #< 10}), lane(current,2), and none), with Var17 not equal 1, and
+                             </li> 
+                             <li> 
+                             there is no evidence that 'obj_meta' holds (for 3, 1, entity, pos(Var20,Var19 | {Var19 #> -10,Var19 #< 10}), lane(current,2), and none), and
+                             </li> 
+                             <li> 
+                             'class' holds (for non_automobile), and
+                             </li> 
+                             <li> 
+                             'class' holds (for non_automobile), justified above, and
+                             </li> 
+                             <li> 
+                             there is no evidence that 'obj_meta' holds (for 3, Var21, non_automobile, pos(Var22,Var23 | {Var23 #> -10,Var23 #< 10}), lane(current,2), and none), with Var21 not equal 1, and
+                             </li> 
+                             <li> 
+                             there is no evidence that 'obj_meta' holds (for 3, 1, non_automobile, pos(Var24,Var23 | {Var23 #> -10,Var23 #< 10}), lane(current,2), and none), and
+                             </li> 
+                             <li> 
+                             'class' holds (for pedestrian), and
+                             </li> 
+                             <li> 
+                             'class' holds (for pedestrian), justified above, and
+                             </li> 
+                             <li> 
+                             there is no evidence that 'obj_meta' holds (for 3, Var25, pedestrian, pos(Var26,Var27 | {Var27 #> -10,Var27 #< 10}), lane(current,2), and none), with Var25 not equal 1, and
+                             </li> 
+                             <li> 
+                             there is no evidence that 'obj_meta' holds (for 3, 1, pedestrian, pos(Var28,Var27 | {Var27 #> -10,Var27 #< 10}), lane(current,2), and none), and
+                             </li> 
+                             <li> 
+                             'class' holds (for plastic_bag), and
+                             </li> 
+                             <li> 
+                             'class' holds (for plastic_bag), justified above, and
+                             </li> 
+                             <li> 
+                             there is no evidence that 'obj_meta' holds (for 3, Var29, plastic_bag, pos(Var30,Var31 | {Var31 #> -10,Var31 #< 10}), lane(current,2), and none), with Var29 not equal 1, and
+                             </li> 
+                             <li> 
+                             there is no evidence that 'obj_meta' holds (for 3, 1, plastic_bag, pos(Var32,Var31 | {Var31 #> -10,Var31 #< 10}), lane(current,2), and none), and
+                             </li> 
+                             <li> 
+                             'class' holds (for roadblock), and
+                             </li> 
+                             <li> 
+                             'class' holds (for roadblock), justified above, and
+                             </li> 
+                             <li> 
+                             there is no evidence that 'obj_meta' holds (for 3, Var33, roadblock, pos(Var34,Var35 | {Var35 #> -10,Var35 #< 10}), lane(current,2), and none), with Var33 not equal 1, and
+                             </li> 
+                             <li> 
+                             there is no evidence that 'obj_meta' holds (for 3, 1, roadblock, pos(Var36,Var35 | {Var35 #> -10,Var35 #< 10}), lane(current,2), and none), and
+                             </li> 
+                             <li> 
+                             'class' holds (for traffic_light), and
+                             </li> 
+                             <li> 
+                             'class' holds (for traffic_light), justified above, and
+                             </li> 
+                             <li> 
+                             there is no evidence that 'obj_meta' holds (for 3, Var37, traffic_light, pos(Var38,Var39 | {Var39 #> -10,Var39 #< 10}), lane(current,2), and none), with Var37 not equal 1, and
+                             </li> 
+                             <li> 
+                             there is no evidence that 'obj_meta' holds (for 3, 1, traffic_light, pos(Var40,Var39 | {Var39 #> -10,Var39 #< 10}), lane(current,2), and none), and
+                             </li> 
+                             <li> 
+                             'class' holds (for truck), and
+                             </li> 
+                             <li> 
+                             'class' holds (for truck), justified above, and
+                             </li> 
+                             <li> 
+                             there is no evidence that 'obj_meta' holds (for 3, Var41, truck, pos(Var42,Var43 | {Var43 #> -10,Var43 #< 10}), lane(current,2), and none), with Var41 not equal 1, and
+                             </li> 
+                             <li> 
+                             there is no evidence that 'obj_meta' holds (for 3, 1, truck, pos(Var44,Var43 | {Var43 #> -10,Var43 #< 10}), lane(current,2), and none), and
+                             </li> 
+                             <li> 
+                             'class' holds (for unknown), and
+                             </li> 
+                             <li> 
+                             'class' holds (for unknown), justified above, and
+                             </li> 
+                             <li> 
+                             there is no evidence that 'obj_meta' holds (for 3, Var45, unknown, pos(Var46,Var47 | {Var47 #> -10,Var47 #< 10}), lane(current,2), and none), with Var45 not equal 1, and
+                             </li> 
+                             <li> 
+                             there is no evidence that 'obj_meta' holds (for 3, 1, unknown, pos(Var48,Var47 | {Var47 #> -10,Var47 #< 10}), lane(current,2), and none).
+                             </li> 
+                             </ul> 
+                         </li> 
+                         </ul> 
+                     </li> 
+                     </ul> 
+                 </li> 
+                 </ul> 
+             </li> 
+             </ul> 
+         </li> 
+         <li> 
+         'is' holds (for 4, and 3+1), and
+         </li> 
+         <li> 
+         'start_drive' holds (for 4, and 4).
+         </li> 
+         </ul> 
+     </li> 
+     <li> 
+     The global constraints hold.
+     </li> 
+ </ul> 
+
+<script
+  src="https://code.jquery.com/jquery-1.11.2.min.js"
+  integrity="sha256-Ls0pXSlb7AYs7evhd+VLnWsZ/AqEHcXBeMZUycz/CcA="
+  crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+    (function($){
+        $.fn.depth = function(options,depth) {
+            options = options || {};
+            options.delay = options.delay || 0;
+            
+            this.find("> li").each(function() {
+                e = $(this)
+                var subtree = e.find('> ul');
+
+                if (subtree.length > 0) {
+                    if (depth > 0) {
+                        e.addClass('tree-opened');
+                        e.removeClass('tree-closed');
+
+                        subtree.slideDown(options.delay);
+                        subtree.show(options.delay);
+
+                        subtree.depth(options,depth-1);
+                    } else {
+                        e.removeClass('tree-opened');
+                        e.addClass('tree-closed');
+
+                        subtree.slideUp(options.delay);
+                        subtree.hide(options.delay);
+
+                        subtree.collapse(options);
+                    }
+                }
+            });
+            return true;
+        }
+        
+        $.fn.expand = function(options,depth) {
+            options = options || {};
+            options.delay = options.delay || 0;
+            
+            this.find("> li").each(function() {
+                e = $(this)
+                var subtree = e.find('> ul');
+
+                if (subtree.length > 0) {
+                    e.addClass('tree-opened');
+                    e.removeClass('tree-closed');
+
+                    subtree.slideDown(options.delay);
+                    subtree.show(options.delay);
+
+                    subtree.expand(options,depth+1);
+                }
+                g_depth=Math.max(g_depth,depth);
+            });
+            return true;
+        }
+
+        $.fn.collapse = function(options) {
+            options = options || {};
+            options.delay = options.delay || 0;
+            
+            this.find("> li").each(function() {
+                e = $(this)
+                var subtree = e.find('> ul');
+
+                if (subtree.length > 0) {
+                    e.removeClass('tree-opened');
+                    e.addClass('tree-closed');
+
+                    subtree.slideUp(options.delay);
+                    subtree.hide(options.delay);
+
+                    subtree.collapse(options);
+                } 
+            });
+            return true;
+        }
+        
+        $.fn.treemenu = function(options) {
+            options = options || {};
+            options.delay = options.delay || 0;
+            options.openActive = options.openActive || false;
+            options.closeOther = options.closeOther || false;
+            options.activeSelector = options.activeSelector || ".active";
+
+            this.addClass("treemenu");
+
+            if (!options.nonroot) {
+                this.addClass("treemenu-root");
+            }
+
+            options.nonroot = true;
+
+            this.find("> li").each(function() {
+                e = $(this);
+                var subtree = e.find('> ul');
+                var button = e.find('.toggler').eq(0);
+
+                if(button.length == 0) {
+                    // create toggler
+                    var button = $('<span>');
+                    button.addClass('toggler');
+                    e.prepend(button);
+                }
+
+                if(subtree.length > 0) {
+                    subtree.hide();
+
+                    e.addClass('tree-closed');
+
+                    e.find(button).click(function() {
+                        var li = $(this).parent('li');
+
+                        if (options.closeOther && li.hasClass('tree-closed')) {
+                            var siblings = li.parent('ul').find("li:not(.tree-empty)");
+                            siblings.removeClass("tree-opened");
+                            siblings.addClass("tree-closed");
+                            siblings.removeClass(options.activeSelector);
+                            siblings.find('> ul').slideUp(options.delay);
+                        }
+
+                        li.find('> ul').slideToggle(options.delay);
+                        li.toggleClass('tree-opened');
+                        li.toggleClass('tree-closed');
+                        li.toggleClass(options.activeSelector);
+                    });
+
+                    $(this).find('> ul').treemenu(options);
+                } else {
+                    $(this).addClass('tree-empty');
+                }
+            });
+
+            if (options.openActive) {
+                var cls = this.attr("class");
+
+                this.find(options.activeSelector).each(function(){
+                    var el = $(this).parent();
+
+                    while (el.attr("class") !== cls) {
+                        el.find('> ul').show();
+                        if(el.prop("tagName") === 'UL') {
+                            el.show();
+                        } else if (el.prop("tagName") === 'LI') {
+                            el.removeClass('tree-closed');
+                            el.addClass("tree-opened");
+                            el.show();
+                        }
+
+                        el = el.parent();
+                    }
+                });
+            }
+
+            expand({delay:0},0);
+            max_depth = g_depth;
+            this.collapse({delay:0});
+            g_depth = 0;
+
+            return this;
+        }
+    })(jQuery);
+
+var g_depth = 0;
+var max_depth = 4
+
+function depth(step){
+    g_depth = g_depth + step;
+    g_depth = g_depth < 0 ? 0 : g_depth;
+    g_depth = g_depth > max_depth ? max_depth : g_depth;
+    $(".tree").depth({delay:500},g_depth);
+}
+
+function expand(){
+    g_depth = 0     
+    $(".tree").expand({delay:0},0);
+}
+
+function collapse(){
+    $(".tree").collapse({delay:0});
+    g_depth = 0;    
+}
+
+$(function(){
+    $(".tree").treemenu({delay:0}).openActive();
+});
+
+</script>
+
+
+
+ <div style='min-height: 400px'></div>
+
+</body>
+</html>
+

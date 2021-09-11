@@ -34,6 +34,12 @@ intersection(t_intersect, minor, i). % meta - AV in major or minor road of inter
 % sensor(location, distance) - location specifies which sensor of AV and distance explains how far
 sensor(left, 0.2)
 
+% obj_pred_path(object id, object path, timestamp) - true if predicted path of object is available.
+obj_pred_path(1, op1, i).
+
+% path_intersects(path1, path2) - true if path1 and path2 (predicted object paths) intersect.
+path_intersects(sp1, op1).
+
 % traffic_sign(sign, timestamp)
 traffic_sign(stop, i).
 

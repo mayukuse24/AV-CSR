@@ -18,10 +18,6 @@ scasp -i main_scasp.pl --prev_forall
 start_drive(1, 12). % Runs program from 1st frame to the 11th frame
 ```
 
-Example runs can be found in `screenshots` folder
-
-NOTE: execution for ~10-12 frames can take about 4-5 minutes. Do not assume program is stuck in infinite loop
-
 ## What is a frame?
 
 A frame represents a set of facts at a given timestamp T, that defines the environment for the AV. For e.g. it may
@@ -34,5 +30,14 @@ interpet/use them
 
 Example scenarios are available in folder `scenarios_scasp`. Rename scenario file path in the `\#include` directive
 in the `main_scasp.pl` file to run program on selected scenario
+
+## KITTI samples
+
+Representative KITTI frames mentioned in paper is under `scenarios_scasp/kitti` folder
+
+## Generating proof tree
+
+Start scasp iterative mode with command flags `--tree`, `--human` or `--html` to generate proof trees for
+particular execution
 
 

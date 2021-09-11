@@ -1,7 +1,7 @@
 %:- dynamic obj_meta/6, lanes/2, intent/2, traffic_light/2, expected_action/2, speed_limit/2, self_speed/2, self_lane/2.
 
 %#include 'scenarios_scasp/test/scenario_1.pl'.
-#include 'scenarios_scasp/kitty/2011_09_26_drive_0051.pl'. 
+#include 'scenarios_scasp/kitti/2011_09_26_drive_0051.pl'. 
 %#include 'scenarios_scasp/av_fault/tesla_concrete_barrier.pl'. 
 #include 'rules/entities.pl'.
 
